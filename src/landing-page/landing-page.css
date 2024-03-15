@@ -1,0 +1,59 @@
+/* src/App.css */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  @apply font-light flex flex-col h-screen;
+  background: rgba(
+    168,
+    7,
+    1,
+    0.5
+  ); /* Set background color to 50% transparent red */
+  background-image: url("../assets/bg-lapang.png"); /* Set the path to your background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.App {
+  @apply text-center flex-grow;
+}
+
+/* Additional styling for buttons */
+button {
+  @apply text-center text-gray-600; /* Set the default text color to grey */
+  transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+  border: 1px solid transparent;
+  background-color: white;
+}
+
+@media (min-width: 768px) {
+  /* Apply styles only for screens larger than 768px width */
+  button:hover {
+    @apply bg-transparent text-white border-white; ; /* On hover, set background to transparent and text to white */
+  }
+}
+
+/* Set the main color to #A80701 */
+.bg-red-800 {
+  background-color: #a80701;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .App {
+    @apply p-4;
+  }
+
+  button {
+    @apply w-full;
+  }
+}
+
+/* Styling for the footer */
+footer {
+  @apply text-white py-2 text-sm bg-red-800;
+}
