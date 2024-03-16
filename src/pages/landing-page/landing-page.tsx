@@ -1,7 +1,7 @@
 import React from "react";
 import "./landing-page.css";
-import PreSeasonImage from "../assets/pre-season.png";
-import ACLImage from "../assets/atmosphere-logo.png";
+import PreSeasonImage from "../../assets/pre-season.png";
+import ACLImage from "../../assets/atmosphere-logo.png";
 import { Link } from "react-router-dom";
 
 const buttonsData = [

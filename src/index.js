@@ -4,10 +4,10 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import LandingPage from "./landing-page/landing-page.tsx";
-import RegistrationForm from "./register/register.tsx";
-import LoginPage from "./login/login.tsx";
-import FootballMatchRegistration from "./user-register-match/user-register-match.tsx";
+import LandingPage from "./pages/landing-page/landing-page.tsx";
+import RegistrationForm from "./pages/register/register.tsx";
+import LoginPage from "./pages/login/login.tsx";
+import FootballMatchRegistration from "./pages/user-register-match/user-register-match.tsx";
 const router = createBrowserRouter([
   {
     path: "/",

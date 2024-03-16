@@ -4,22 +4,9 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-body {
-  @apply font-light flex flex-col h-screen;
-  background: rgba(
-    168,
-    7,
-    1,
-    0.5
-  ); /* Set background color to 50% transparent red */
-  background-image: url("../assets/bg-lapang.png"); /* Set the path to your background image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
 
 .App {
-  @apply text-center flex-grow;
+  @apply text-center flex-grow h-dvh;
 }
 
 /* Additional styling for buttons */

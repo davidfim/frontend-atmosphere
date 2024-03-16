@@ -1,5 +1,5 @@
-// LoginPage.js
-import AtmosphereLogo from "../assets/atmosphere-logo.png"
+import "./login.css"
+import AtmosphereLogo from "../../assets/atmosphere-logo.png"
 
 import React, { useState } from "react";
 
@@ -24,7 +24,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="App bg-red-800 min-h-screen flex flex-col justify-center items-center">
+    <div className="bg-red-800 min-h-screen flex flex-col justify-center items-center">
       <img
         src={AtmosphereLogo}
         alt="Logo"
