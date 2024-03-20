@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom'
+
 import AtmosphereLogo from "../../assets/atmosphere-logo.png";
 import "./register.css";
-import useStore from "../../store.ts";
+import userUseCase from "../../useCase/user.useCase.ts";
+
 
 const RegistrationForm = () => {
-  const { createPlayer } = useStore();
+  const navigate = useNavigate();
+  const { handleSubmitRegister, error } = userUseCase();
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +18,6 @@ const RegistrationForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [instagramAccount, setInstagramAccount] = useState("");
 
-  const [error, setError] = useState(null);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -42,46 +45,17 @@ const RegistrationForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Process registration data here
+    try {
+      await handleSubmitRegister({ email, password, confirmPassword, name, phoneNumber, instagramAccount })
+      navigate('/login');
+    } catch {
+      console.log(error)
+    }
+  }
 
-    // Reset previous errors
-    setError(null);
-
-    // if (
-    //   !email ||
-    //   !password ||
-    //   !confirmPassword ||
-    //   !name ||
-    //   !phoneNumber ||
-    //   !instagramAccount
-    // ) {
-    //   setError("All fields are required.");
-    //   return;
-    // }
-
-    // if (password !== confirmPassword) {
-    //   setError("Passwords do not match.");
-    //   return;
-    // }
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Confirm Password:", confirmPassword);
-    console.log("Name:", name);
-    console.log("Phone Number:", phoneNumber);
-    console.log("Instagram Account:", instagramAccount);
-
-    const playerData = {
-      email,
-      password,
-      name,
-      phone_num: phoneNumber,
-      insta: instagramAccount,
-    };
-
-    await createPlayer(playerData);
-
-    // You can send this data to your server for further processing
-  };
+  useEffect(() => {
+    console.log(error)
+  }, [error]);
 
   return (
     <div className="registration-container">
@@ -91,15 +65,6 @@ const RegistrationForm = () => {
         className="rounded-full overflow-hidden h-24 w-24 mb-4"
       />
       <div className="registration-form">
-        <div className="login-option">
-          <div className="flex justify-center items-center">
-            <p>Sudah punya akun Atmosphere FC ?</p>
-          </div>
-        </div>
-        <Link to="/login">
-          <button className="register-button">Login</button>
-        </Link>
-        <div className="divider">atau daftar</div>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email">Email</label>

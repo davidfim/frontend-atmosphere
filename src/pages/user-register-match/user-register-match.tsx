@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import TOCImage from "../../assets/toc.png";
 import AtmosphereLogo from "../../assets/atmosphere-logo.png";
 import PreSeasonLogo from "../../assets/pre-season.png";
-import "./user-register-match.css"; // Import the CSS file
+import "./user-register-match.css";
 import Modal from "react-modal";
 
 const FootballMatchRegistration = () => {
@@ -71,89 +71,90 @@ const FootballMatchRegistration = () => {
       </div>
       <div className="registration-form">
         <form onSubmit={handleSubmit}>
-          <div className="flex items-center mb-4">
-            <p className="mr-2">Posisi</p>
-
-            <div className="flex">
-              <div className="flex items-center mr-4">
-                <input
-                  type="radio"
-                  id="kiper"
-                  name="position"
-                  value="Kiper"
-                  checked={position === "Kiper"}
-                  onChange={handlePositionChange}
-                  className="mr-2"
-                />
-                <label htmlFor="kiper">{"Kiper (70k)"}</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="radio"
-                  id="player"
-                  name="position"
-                  value="Pemain"
-                  checked={position === "Pemain"}
-                  onChange={handlePositionChange}
-                  className="mr-2"
-                />
-                <label htmlFor="player">{"Pemain (110k)"}</label>
-              </div>
+          <div className="mb-4">
+            <h3>Posisi</h3>
+            <div>
+              <ul className="grid w-full md:gap-3 md:grid-cols-2">
+                <li>
+                  <input
+                    type="radio"
+                    id="kiper"
+                    name="position"
+                    value="kiper"
+                    className="hidden peer"
+                    required
+                    onChange={handlePositionChange}
+                  />                  <label htmlFor="kiper" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div className="block">
+                      <div className="w-full text-lg font-semibold">Kiper</div>
+                      <div className="w-full">Rp 70.000</div>
+                    </div>
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    id="pemain"
+                    name="position"
+                    value="pemain"
+                    className="hidden peer"
+                    required
+                    onChange={handlePositionChange}
+                  />                  <label htmlFor="pemain" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div className="block">
+                      <div className="w-full text-lg font-semibold">Pemain</div>
+                      <div className="w-full">Rp 110.000</div>
+                    </div>
+                  </label>
+                </li>
+              </ul>
             </div>
           </div>
-          <div className="flex items-center mb-4">
-            <p className="mr-2">Warna tim:</p>
-            <div className="flex">
-              <div className="flex">
-                <div className="flex items-center mr-4">
+
+          <div className="mb-4">
+            <h3>Warna Tim</h3>
+            <div>
+              <ul className="grid w-full md:gap-3 md:grid-cols-2">
+                <li>
                   <input
                     type="checkbox"
                     id="merah"
-                    value="Merah"
-                    checked={teamColors.includes("Merah")}
+                    name="warna_tim"
+                    value="merah"
+                    className="hidden peer"
+
                     onChange={handleColorChange}
-                  />
-                  <label htmlFor="red" className="ml-2">
-                    Merah
+                  />                  <label htmlFor="merah" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div className="block">
+                      <div className="w-full text-lg font-semibold">Merah</div>
+                    </div>
                   </label>
-                </div>
-                <div className="flex items-center mr-4">
-                  <input
-                    type="checkbox"
-                    id="hitam"
-                    value="Hitam"
-                    checked={teamColors.includes("Hitam")}
-                    onChange={handleColorChange}
-                  />
-                  <label htmlFor="hitam" className="ml-2">
-                    Hitam
+                </li>
+                <li>
+                  <input type="checkbox" id="biru" name="warna_tim" value="biru" className="hidden peer" onChange={handleColorChange} />
+                  <label htmlFor="biru" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div className="block">
+                      <div className="w-full text-lg font-semibold">Biru</div>
+                    </div>
                   </label>
-                </div>
-                <div className="flex items-center mr-4">
-                  <input
-                    type="checkbox"
-                    id="biru"
-                    value="Biru"
-                    checked={teamColors.includes("Biru")}
-                    onChange={handleColorChange}
-                  />
-                  <label htmlFor="biru" className="ml-2">
-                    Biru
+                </li>
+                <li>
+                  <input type="checkbox" id="hitam" name="warna_tim" value="hitam" className="hidden peer" onChange={handleColorChange} />
+                  <label htmlFor="hitam" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div className="block">
+                      <div className="w-full text-lg font-semibold">Hitam</div>
+                    </div>
                   </label>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="putih"
-                    value="Putih"
-                    checked={teamColors.includes("Putih")}
-                    onChange={handleColorChange}
-                  />
-                  <label htmlFor="putih" className="ml-2">
-                    Putih
+                </li>
+                <li>
+                  <input type="checkbox" id="putih" name="warna_tim" value="biru" className="hidden peer" onChange={handleColorChange} />
+                  <label htmlFor="putih" className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                    <div className="block">
+                      <div className="w-full text-lg font-semibold">Putih</div>
+                    </div>
                   </label>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
           <div className="flex items-center mb-4">

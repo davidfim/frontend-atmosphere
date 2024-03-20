@@ -1,14 +1,17 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@auth-kit/react-router': ^3.1.2
   '@testing-library/jest-dom': ^5.17.0
   '@testing-library/react': ^13.4.0
   '@testing-library/user-event': ^13.5.0
+  AuthOutlet: link:@auth-kit/react-router/AuthOutlet
   autoprefixer: ^10.4.18
   axios: ^1.6.8
   cors: ^2.8.5
   postcss: ^8.4.35
   react: ^18.2.0
+  react-auth-kit: ^3.1.2
   react-dom: ^18.2.0
   react-modal: ^3.16.1
   react-router-dom: ^6.22.3
@@ -18,14 +21,17 @@ specifiers:
   zustand: ^4.5.2
 
 dependencies:
+  '@auth-kit/react-router': 3.1.2_react-dom@18.2.0+react@18.2.0
   '@testing-library/jest-dom': 5.17.0
   '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
   '@testing-library/user-event': 13.5.0
+  AuthOutlet: link:@auth-kit/react-router/AuthOutlet
   autoprefixer: 10.4.18_postcss@8.4.35
   axios: 1.6.8
   cors: 2.8.5
   postcss: 8.4.35
   react: 18.2.0
+  react-auth-kit: 3.1.2_react-dom@18.2.0+react@18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-modal: 3.16.1_react-dom@18.2.0+react@18.2.0
   react-router-dom: 6.22.3_react-dom@18.2.0+react@18.2.0
@@ -69,6 +75,19 @@ packages:
       json-schema: 0.4.0
       jsonpointer: 5.0.1
       leven: 3.1.0
+    dev: false
+
+  /@auth-kit/react-router/3.1.2_react-dom@18.2.0+react@18.2.0:
+    resolution: {integrity: sha512-R8CXY1Bd3X8jCS2CtSfl+m6OZ5rYdWtava1Tvn1gS7vDBFDPEcRvG+AHNWi/F8kQdVVm2e9LTokYOWWgngeeFA==}
+    peerDependencies:
+      react: '>=16.8.0 || ^17.x || ^18.x'
+      react-router: '>=6.x'
+    dependencies:
+      react: 18.2.0
+      react-auth-kit: 3.1.2_react-dom@18.2.0+react@18.2.0
+    transitivePeerDependencies:
+      - next
+      - react-dom
     dev: false
 
   /@babel/code-frame/7.23.5:
@@ -6866,6 +6885,11 @@ packages:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
 
+  /js-cookie/3.0.5:
+    resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
+    engines: {node: '>=14'}
+    dev: false
+
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: false
@@ -8675,6 +8699,19 @@ packages:
       whatwg-fetch: 3.6.20
     dev: false
 
+  /react-auth-kit/3.1.2_react-dom@18.2.0+react@18.2.0:
+    resolution: {integrity: sha512-1mi6bX7e2kXvHe8nPEacdravcgUoyYj++3uP9w9/K00UILJXt4AmkHX0t4GytUeumosGetj68xGnXkziccnL/A==}
+    peerDependencies:
+      next: '>=13.0 || ^14.x'
+      react: '>=16.8.0 || ^17.x || ^18.x'
+      react-dom: '>=16.8.0 || ^17.x || ^18.x'
+    dependencies:
+      js-cookie: 3.0.5
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      rxjs: 7.8.1
+    dev: false
+
   /react-dev-utils/12.0.1_eslint@8.57.0+webpack@5.90.3:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
@@ -9133,6 +9170,12 @@ packages:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
     dependencies:
       queue-microtask: 1.2.3
+
+  /rxjs/7.8.1:
+    resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
 
   /safe-array-concat/1.1.2:
     resolution: {integrity: sha512-vj6RsCsWBCf19jIeHEfkRMw8DPiBb+DMXklQ/1SGDHOMlHdPUkZXFQ2YdplS23zESTijAcurb1aSgJA3AgMu1Q==}

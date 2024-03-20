@@ -2,10 +2,19 @@ import "./login.css"
 import AtmosphereLogo from "../../assets/atmosphere-logo.png"
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+
+import useSignIn from 'react-auth-kit/hooks/useSignIn';
+import apiService from "../../service.ts";
+
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const signIn = useSignIn();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -15,12 +24,42 @@ const LoginPage = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Process login data here
-    console.log("Email:", email);
-    console.log("Password:", password);
-    // You can send this data to your server for authentication
+  const handleSubmit = async (e) => {
+    try {
+
+      const loginBody = {
+        email, password
+      }
+
+      const loginResponse = await apiService.login(loginBody)
+
+      e.preventDefault();
+      // Process login data here
+      console.log("Email:", email);
+      console.log("Password:", password);
+      // You can send this data to your server for authentication
+
+
+
+      if (signIn({
+        auth: {
+          token: loginResponse.token,
+          type: 'Bearer'
+        },
+        // refresh: 'ey....mA'
+        userState: {
+          email: email,
+          uid: loginResponse.userId
+        }
+      })) {
+        // Redirect or do-something
+      } else {
+        //Throw error
+      }
+    }
+    catch {
+
+    }
   };
 
   return (
@@ -63,6 +102,9 @@ const LoginPage = () => {
           >
             Login
           </button>
+          <p className="mt-4 text-center">
+            Belum punya akun Atmosphere? <Link to="/register" className="text-red-500">Daftar di sini</Link>
+          </p>
         </form>
       </div>
     </div>

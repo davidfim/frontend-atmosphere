@@ -11,6 +11,14 @@ const apiService = {
       throw error;
     }
   },
+  getMatches: async (data = {}) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/match`);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
   get: async (url, params = {}) => {
     try {
       const response = await axios.get(`${BASE_URL}${url}`, { params });
@@ -23,6 +31,15 @@ const apiService = {
   post: async (url, data = {}) => {
     try {
       const response = await axios.post(`${BASE_URL}${url}`, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  login: async (data = {}) => {
+    try {
+      const response = await axios.post(`${BASE_URL}/login`, data);
       return response.data;
     } catch (error) {
       throw error;

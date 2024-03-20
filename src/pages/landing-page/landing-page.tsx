@@ -1,20 +1,34 @@
 import React from "react";
+import { useEffect } from "react";
 import "./landing-page.css";
 import PreSeasonImage from "../../assets/pre-season.png";
 import ACLImage from "../../assets/atmosphere-logo.png";
 import { Link } from "react-router-dom";
+import useStore from "../../store";
 
 const buttonsData = [
   {
+    id: '123',
     title: "Atmosphere Pre season - Kamis, 14 Maret (19:30-22:00)",
+    type: 'pre-season',
     imageSrc: PreSeasonImage,
-    link: "/register",
   },
   { title: "ACL Season 11", imageSrc: ACLImage, link: "google.com" },
   { title: "ACL season 12", imageSrc: ACLImage, link: "google.com" },
 ];
 
 const LandingPage = ({ userName = "david" }) => {
+  const { matches, getMatches } = useStore();
+
+  const fetchMatches = async () => {
+    await getMatches();
+  };
+
+  useEffect(() => {
+    fetchMatches();
+    console.log(matches)
+  }, []);
+
   return (
     <div className="App bg-red-800 min-h-screen flex flex-col justify-center items-center">
       {userName && ( // Render if userName exists
@@ -31,18 +45,18 @@ const LandingPage = ({ userName = "david" }) => {
         ATMOSPHERE #feeltheatmosphere
       </header>
       <main className="flex flex-col items-center">
-        {buttonsData.map((button, index) => (
-          <Link to={button.link}>
+        {matches?.map((match, index) => (
+          <Link to={`/register-match/${match.id}`}>
             <button
               key={index}
               className="bg-white text-red-800 py-2 px-4 rounded mb-4 flex items-center"
             >
               <img
-                src={button.imageSrc}
+                src={match.type === 'pre-season' ? PreSeasonImage : ACLImage}
                 alt="Match type"
                 className="mr-2 h-8 w-8"
               />
-              {button.title}
+              {match.title}
             </button>
           </Link>
         ))}
